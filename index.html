@@ -1,0 +1,358 @@
+<!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+
+                    <!-- User Profile / Auth State -->
+                    <div id="navUserSection" class="flex items-center space-x-2">
+                        <!-- Dynamic Auth Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SAFETY GUARANTEE BANNER -->
+    <div class="bg-gradient-to-r from-emerald-700 via-brand-600 to-teal-700 text-white py-2 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-center sm:text-left space-y-1 sm:space-y-0">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-shield-halved text-amber-300 text-base animate-pulse"></i>
+                <span font-medium id="bannerText"><strong>ਜ਼ੀਰੋ-ਫਰੋਡ ਗਾਰੰਟੀ:</strong> SmartEarn 'ਤੇ ਕੋਈ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਫੀਸ ਨਹੀਂ। ਸਾਰੇ ਪੇਆਉਟਸ ਸਿੱਧਾ ਤੁਹਾਡੇ ਬੈਂਕ ਅਕਾਊਂਟ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਟ੍ਰਾਂਸਫਰ ਹੁੰਦੇ ਹਨ!</span>
+            </div>
+            <span class="bg-white/20 px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider backdrop-blur-sm">256-Bit SSL Encrypted</span>
+        </div>
+    </div>
+
+    <!-- MAIN BODY CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- GLOBAL NOTIFICATION TOAST -->
+        <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+            <div id="toastContent" class="flex items-center space-x-3 px-4 py-3 rounded-xl shadow-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 border border-slate-700 dark:border-slate-200">
+                <i id="toastIcon" class="fa-solid fa-circle-check text-brand-500"></i>
+                <span id="toastMsg" class="text-sm font-medium">ਸਫਲਤਾਪੂਰਵਕ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ!</span>
+            </div>
+        </div>
+
+        <!-- AUTH MODAL / VIEW (Shown when not logged in) -->
+        <div id="authSection" class="max-w-md mx-auto my-8 animate-fade-in hidden">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
+                <!-- Auth Header -->
+                <div class="text-center mb-6">
+                    <div class="inline-flex p-3 rounded-2xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 mb-3">
+                        <i class="fa-solid fa-user-shield text-3xl"></i>
+                    </div>
+                    <h2 id="authTitle" class="text-2xl font-bold">ਅਕਾਊਂਟ ਵਿੱਚ ਲੌਗਇਨ ਕਰੋ</h2>
+                    <p id="authSubtitle" class="text-xs text-slate-500 dark:text-slate-400 mt-1">ਈ-ਮੇਲ ਨਾਲ ਸੁਰੱਖਿਅਤ ਸਾਈਨ-ਅੱਪ ਕਰੋ ਅਤੇ ਅੱਜ ਹੀ ਕਮਾਈ ਸ਼ੁਰੂ ਕਰੋ</p>
+                </div>
+
+                <!-- Auth Forms Wrapper -->
+                <div id="authForms">
+                    <!-- LOGIN FORM -->
+                    <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300" id="lblEmail">ਈ-ਮੇਲ ਐਡਰੈੱਸ (Email Address)</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-envelope absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                <input type="email" id="loginEmail" required placeholder="example@gmail.com" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
+</div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300" id="lblPassword">ਪਾਸਵਰਡ (Password)</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-lock absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                <input type="password" id="loginPass" required placeholder="••••••••" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-500 text-white font-semibold shadow-lg shadow-brand-500/25 hover:opacity-95 transition" id="btnLogin">
+                            ਲੌਗਇਨ ਕਰੋ (Login)
+                        </button>
+                    </form>
+
+                    <!-- SIGNUP FORM -->
+                    <form id="signupForm" onsubmit="handleSignupStep1(event)" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300" id="lblFullName">ਪੂਰਾ ਨਾਮ (Full Name)</label>
+                            <input type="text" id="signUpName" required placeholder="ਜਸਪ੍ਰੀਤ ਸਿੰਘ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300">ਈ-ਮੇਲ ਐਡਰੈੱਸ (Email Address)</label>
+                            <input type="email" id="signUpEmail" required placeholder="example@gmail.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300">ਮੋਬਾਈਲ ਨੰਬਰ (Mobile Number)</label>
+                            <input type="tel" id="signUpPhone" required placeholder="9876543210" pattern="[0-9]{10}" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1 text-slate-600 dark:text-slate-300">ਪਾਸਵਰਡ ਬਣਾਓ (Create Password)</label>
+                            <input type="password" id="signUpPass" minlength="6" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-500 text-white font-semibold shadow-lg shadow-brand-500/25 hover:opacity-95 transition" id="btnContinueOTP">
+                            OTP ਕੋਡ ਭੇਜੋ (Send Verification Code)
+</button>
+                    </form>
+
+                    <!-- OTP VERIFICATION FORM SIMULATION -->
+                    <form id="otpForm" onsubmit="verifyOTPAndFinish(event)" class="space-y-4 hidden text-center">
+                        <p class="text-xs text-slate-500">ਅਸੀਂ ਤੁਹਾਡੀ ਈ-ਮੇਲ 'ਤੇ 4 ਅੰਕਾਂ ਦਾ ਸੁਰੱਖਿਆ ਕੋਡ ਭੇਜਿਆ ਹੈ। (ਟੈਸਟ ਲਈ <b>1234</b> ਵਰਤੋ)</p>
+                        <div class="flex justify-center space-x-2 my-4">
+                            <input type="text" maxlength="4" id="otpInput" required class="w-32 text-center text-2xl font-bold tracking-widest py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-lg hover:bg-brand-700 transition" id="btnVerify">
+                            ਮੁਕੰਮਲ ਵੈਰੀਫਾਈ ਕਰੋ (Verify & Create Account)
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Toggle Login/Signup -->
+                <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-center text-xs">
+                    <span id="authToggleText">ਕੀ ਤੁਹਾਡਾ ਅਕਾਊਂਟ ਨਹੀਂ ਹੈ?</span>
+                    <button onclick="toggleAuthMode()" id="authToggleBtn" class="text-brand-600 dark:text-brand-400 font-semibold ml-1 hover:underline">
+                        ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ (Sign Up)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN APP CONTENT (Shown when Logged in) -->
+        <div id="appSection" class="hidden">
+
+            <!-- NAVIGATION TABS -->
+            <div class="flex border-b border-slate-200 dark:border-slate-800 mb-6 overflow-x-auto no-scrollbar space-x-2 sm:space-x-4">
+                <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn py-3 px-4 text-sm font-semibold border-b-2 border-brand-600 text-brand-600 dark:text-brand-400 flex items-center space-x-2 whitespace-nowrap">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span data-i18n="tabDashboard">ਡੈਸ਼ਬੋਰਡ (Dashboard)</span>
+                </button>
+                <button onclick="switchTab('tasks')" id="tab-tasks" class="tab-btn py-3 px-4 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center space-x-2 whitespace-nowrap">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span data-i18n="tabTasks">ਕਮਾਈ ਦੇ ਟਾਸਕ (Tasks)</span>
+                </button>
+                <button onclick="switchTab('withdraw')" id="tab-withdraw" class="tab-btn py-3 px-4 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center space-x-2 whitespace-nowrap">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span data-i18n="tabWithdraw">ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ/ਪੇਆਉਟ (Withdraw)</span>
+                </button>
+                <button onclick="switchTab('help')" id="tab-help" class="tab-btn py-3 px-4 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center space-x-2 whitespace-nowrap">
+                    <i class="fa-solid fa-headset"></i>
+                    <span data-i18n="tabHelp">ਮਦਦ ਅਤੇ ਸੰਪਰਕ (Help & Support)</span>
+                </button>
+            </div>
+
+            <!-- TAB 1: DASHBOARD -->
+            <div id="view-dashboard" class="view-content animate-fade-in space-y-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-semibold mb-2 border border-brand-500/30">
+                            <i class="fa-solid fa-circle-check text-brand-400 mr-1"></i> Verified Account
+                        </span>
+                        <h1 class="text-2xl sm:text-3xl font-bold">ਜੀ ਆਇਆਂ ਨੂੰ, <span id="dashUserName">ਜਸਪ੍ਰੀਤ</span>!</h1>
+                        <p class="text-slate-400 text-sm mt-1" id="dashSub">ਸਮਾਰਟ ਕਮਾਈ ਪਲੇਟਫਾਰਮ 'ਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ। ਆਪਣਾ ਬੈਲੇਂਸ ਦੇਖੋ ਅਤੇ ਟਾਸਕ ਪੂਰੇ ਕਰੋ।</p>
+                    </div>
+                    <button onclick="switchTab('tasks')" class="z-10 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-500 text-white font-semibold text-sm shadow-lg hover:shadow-brand-500/30 transition whitespace-nowrap">
+                        <i class="fa-solid fa-play mr-1.5"></i> <span data-i18n="btnStartTask">ਹੁਣੇ ਟਾਸਕ ਸ਼ੁਰੂ ਕਰੋ</span>
+                    </button>
+                    <!-- Background Accent Shapes -->
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-500/10 rounded-full blur-2xl"></div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Stat 1 -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400" data-i18n="statAvailable">ਕੁੱਲ ਉਪਲਬਧ ਬੈਲੇਂਸ (Wallet Balance)</p>
+                            <h3 class="text-2xl font-bold mt-1 text-emerald-600 dark:text-emerald-400">₹<span id="statWallet">0.00</span></h3>
+                        </div>
+                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                            <i class="fa-solid fa-indian-rupee-sign text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400" data-i18n="statTotal">ਅੱਜ ਤੱਕ ਦੀ ਕੁੱਲ ਕਮਾਈ (Total Earned)</p>
+                            <h3 class="text-2xl font-bold mt-1 text-brand-600 dark:text-brand-400">₹<span id="statTotalEarned">0.00</span></h3>
+                        </div>
+                        <div class="p-3 bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-xl">
+                            <i class="fa-solid fa-chart-line text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400" data-i18n="statCompleted">ਪੂਰੇ ਕੀਤੇ ਟਾਸਕ (Completed Tasks)</p>
+                            <h3 class="text-2xl font-bold mt-1 text-slate-800 dark:text-slate-100" id="statCompletedCount">0</h3>
+                        </div>
+                        <div class="p-3 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl">
+                            <i class="fa-solid fa-circle-check text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-between">
+                        <div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400" data-i18n="statReferral">ਰੈਫਰਲ ਬੋਨਸ (Referral Earnings)</p>
+                            <h3 class="text-2xl font-bold mt-1 text-amber-500">₹<span id="statRefEarned">0.00</span></h3>
+                        </div>
+                        <div class="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-500 rounded-xl">
+                            <i class="fa-solid fa-users text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral Section -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="space-y-1 text-center md:text-left">
+                            <h3 class="font-bold text-lg" data-i18n="refTitle">ਦੋਸਤਾਂ ਨੂੰ ਰੈਫਰ ਕਰੋ ਅਤੇ ₹50 ਪ੍ਰਤੀ ਰੈਫਰਲ ਕਮਾਓ</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="refSub">ਆਪਣੇ ਦੋਸਤਾਂ ਨਾਲ ਆਪਣਾ ਲਿੰਕ ਸਾਂਝਾ ਕਰੋ। ਜਦੋਂ ਉਹ ਸਾਈਨ ਅੱਪ ਕਰਦੇ ਹਨ ਤਾਂ ਤੁਰੰਤ ਬੋਨਸ ਮਿਲੇਗਾ।</p>
+                        </div>
+                        <div class="flex items-center space-x-2 w-full md:w-auto">
+                            <input type="text" id="refLinkInput" readonly value="https://smartearn.net/ref?id=SE9921" class="bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs w-full md:w-64 font-mono">
+                            <button onclick="copyRefLink()" class="px-4 py-2 bg-brand-600 text-white rounded-xl text-xs font-semibold hover:bg-brand-700 transition whitespace-nowrap">
+                                <i class="fa-solid fa-copy mr-1"></i> <span data-i18n="btnCopy">ਕਾਪੀ ਕਰੋ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: EARNING TASKS -->
+            <div id="view-tasks" class="view-content animate-fade-in hidden space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold" data-i18n="taskMainTitle">ਕਮਾਈ ਦੇ ਉਪਲਬਧ ਟਾਸਕ (Daily Tasks)</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="taskMainSub">ਹੇਠਾਂ ਦਿੱਤੇ ਟਾਸਕ ਪੂਰੇ ਕਰੋ ਅਤੇ ਬੈਲੇਂਸ ਵਧਾਓ।</p>
+                    </div>
+                    <button onclick="claimDailyCheckin()" id="btnDailyCheckin" class="px-4 py-2 rounded-xl bg-amber-500 text-white text-xs font-bold shadow-md hover:bg-amber-600 transition flex items-center space-x-1">
+                        <i class="fa-solid fa-gift"></i>
+                        <span data-i18n="btnDailyBonus">ਡੇਲੀ ਚੈੱਕ-ਇਨ ਬੋਨਸ (+₹15)</span>
+                    </button>
+                </div>
+
+                <!-- Task Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tasksContainer">
+                    <!-- Tasks will be generated dynamically -->
+                </div>
+            </div>
+
+            <!-- TAB 3: WITHDRAWAL / BANK TRANSFER -->
+            <div id="view-withdraw" class="view-content animate-fade-in hidden space-y-6">
+                <!-- Security Header -->
+                <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-4 rounded-2xl flex items-start space-x-3">
+                    <i class="fa-solid fa-shield-check text-emerald-600 text-2xl mt-0.5"></i>
+                    <div>
+                        <h4 class="font-bold text-emerald-900 dark:text-emerald-300 text-sm" data-i18n="safePayoutHeader">100% ਸੁਰੱਖਿਅਤ ਡਾਇਰੈਕਟ ਬੈਂਕ Payoutਸ</h4>
+                        <p class="text-xs text-emerald-700 dark:text-emerald-400 mt-0.5" data-i18n="safePayoutSub">
+                            ਤੁਹਾਡੀ ਬੈਂਕ ਜਾਣਕਾਰੀ 256-bit ਐਨਕ੍ਰਿਪਸ਼ਨ ਨਾਲ ਸੁਰੱਖਿਅਤ ਹੈ।
+ਪੈਸੇ ਕਢਵਾਉਣ ਦੀ ਬੇਨਤੀ ਤੋਂ ਬਾਅਦ ਐਡਮਿਨ ਵੈਰੀਫਿਕੇਸ਼ਨ ਹੁੰਦੀ ਹੈ ਤਾਂ ਜੋ ਕਿਸੇ ਨਾਲ ਕੋਈ ਫਰੋਡ ਨਾ ਹੋ ਸਕੇ।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Withdrawal Form -->
+                    <div class="lg:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4" data-i18n="withdrawFormTitle">ਪੈਸੇ ਕਢਵਾਓ (Bank Transfer / Payout)</h3>
+
+                        <!-- Payment Method Selector -->
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="payoutMethod" value="bank" checked onchange="togglePayoutFields()" class="peer hidden">
+                                <div class="p-3.5 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-center peer-checked:border-brand-500 peer-checked:bg-brand-50/50 dark:peer-checked:bg-brand-900/20 transition">
+                                    <i class="fa-solid fa-building-columns text-xl text-brand-600 mb-1"></i>
+                                    <p class="text-xs font-bold" data-i18n="methodBank">ਸਿੱਧਾ ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ (Direct Bank Transfer)</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="payoutMethod" value="wallet" onchange="togglePayoutFields()" class="peer hidden">
+                                <div class="p-3.5 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-center peer-checked:border-brand-500 peer-checked:bg-brand-50/50 dark:peer-checked:bg-brand-900/20 transition">
+                                    <i class="fa-solid fa-wallet text-xl text-purple-600 mb-1"></i>
+                                    <p class="text-xs font-bold" data-i18n="methodWallet">Paytm / UPI Wallet</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <form id="payoutForm" onsubmit="handlePayoutSubmit(event)" class="space-y-4">
+                            <!-- Amount -->
+                            <div>
+                                <label class="block text-xs font-semibold mb-1" data-i18n="lblAmount">ਰਕਮ (Amount in ₹)</label>
+                                <input type="number" id="payoutAmount" min="100" required placeholder="ਘੱਟੋ-ਘੱਟ ₹100" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+                                <span class="text-[11px] text-slate-500" data-i18n="minWithdrawNote">* ਘੱਟੋ-ਘੱਟ ਕਢਵਾਉਣ ਦੀ ਸੀਮਾ ₹100 ਹੈ</span>
+                            </div>
+
+                            <!-- BANK TRANSFER FIELDS -->
+                            <div id="bankFields" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1" data-i18n="lblHolderName">ਖਾਤਾਧਾਰਕ ਦਾ ਨਾਮ (Account Holder Name)</label>
+                                    <input type="text" id="bankHolder" placeholder="ਜਿਵੇਂ: Jaspreet Singh" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1" data-i18n="lblBankName">ਬੈਂਕ ਦਾ ਨਾਮ (Bank Name)</label>
+                                        <input type="text" id="bankName" placeholder="SBI, HDFC, Punjab National Bank" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+</div>
+                                    <div>
+                                        <label class="block text-xs font-semibold mb-1" data-i18n="lblIFSC">IFSC Code</label>
+                                        <input type="text" id="bankIFSC" placeholder="SBIN0001234" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500 uppercase">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1" data-i18n="lblAccNumber">ਬੈਂਕ ਖਾਤਾ ਨੰਬਰ (Bank Account Number)</label>
+                                    <input type="password" id="bankAccNo" placeholder="ਅਕਾਊਂਟ ਨੰਬਰ ਦਰਜ ਕਰੋ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+                                </div>
+                            </div>
+
+                            <!-- WALLET FIELDS -->
+                            <div id="walletFields" class="space-y-4 hidden">
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1" data-i18n="lblWalletNum">Paytm / Wallet Phone Number</label>
+                                    <input type="tel" id="walletNum" placeholder="10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-500 text-white font-semibold shadow-lg shadow-brand-500/25 hover:opacity-95 transition" data-i18n="btnRequestWithdraw">
+                                ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ ਦੀ ਬੇਨਤੀ ਭੇਜੋ (Request Payout)
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Withdrawal History Log -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg mb-3" data-i18n="historyTitle">ਪਿਛਲਾ ਪੇਆਉਟ ਰਿਕਾਰਡ (Payout History)</h3>
+                            <div class="space-y-3" id="payoutHistoryList">
+                                <!-- History items populated by JS -->
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-center">
+                            <span class="text-[11px] text-slate-500 flex items-center justify-center space-x-1">
+                                <i class="fa-solid fa-clock"></i>
+                                <span data-i18n="payoutTimeNote">ਆਮ ਤੌਰ 'ਤੇ ਪੈਸੇ 1-2 ਘੰਟੇ ਵਿੱਚ ਪ੍ਰਾਪਤ ਹੁੰਦੇ ਹਨ</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: HELP & CONTACT US SECTION -->
+            <div id="view-help" class="view-content animate-fade-in hidden space-y-6">
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <h2 class="text-2xl font-bold" data-i18n="helpHeader">ਮਦਦ ਅਤੇ ਸਹਾਇਤਾ ਕੇਂਦਰ (Help Center)</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="helpSub">ਜੇਕਰ ਤੁਹਾਨੂੰ ਕੋਈ ਸਮੱਸਿਆ ਆਉਂਦੀ ਹੈ ਤਾਂ ਸਾਡੀ ਟੀਮ ਨਾਲ ਸੰਪਰਕ ਕਰੋ। ਅਸੀਂ 24/7 ਉਪਲਬਧ ਹਾਂ।</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Contact Form -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4 flex items-center space-x-2">
+<i class="fa-solid fa-envelope-open-text text-brand-600"></i>
+                            <span data-i18n="formContactTitle">ਸਾਨੂੰ ਸੁਨੇਹਾ ਭੇਜੋ (Contact Us)</span>
+                        </h3>
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1" data-i18n="lblContactName">ਨਾਮ</label>
+                                <input type="text" id="contactName" required placeholder="ਤੁਹਾਡਾ ਨਾਮ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500">
+                            </div>
+                            <div>
+                                <label class="bloc
