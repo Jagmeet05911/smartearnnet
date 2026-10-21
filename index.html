@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartEarn - Secure OTP Platform</title>
+    <title>SmartEarn - Maximum Secure Platform</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 10px; }
@@ -34,7 +34,6 @@
         .logout-btn { background: #ef4444; margin-top: 20px; }
         .banner { background: #e0e7ff; color: #3730a3; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 15px; text-align: center; font-weight: 500; }
         
-        /* Modal Popup for OTP */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
         .modal-content { background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .modal-content h3 { margin-bottom: 10px; color: #1f2937; }
@@ -58,14 +57,14 @@
                 <input type="text" id="userName" placeholder="ਆਪਣਾ ਅਸਲੀ ਨਾਮ ਲਿਖੋ">
             </div>
             <div class="form-group">
-                <label id="lblRegisterEmail">10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ</label>
-                <input type="tel" id="userEmail" maxlength="10" placeholder="ਜ যেমন: 9876543210">
+                <label id="lblRegisterEmail">ਅਸਲੀ 10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ</label>
+                <input type="tel" id="userEmail" maxlength="10" placeholder="ਜਿਵੇਂ: 9876543210">
             </div>
             <div class="form-group">
                 <label id="lblRegisterPass">ਪਾਸਵਰਡ (ਘੱਟੋ-ਘੱਟ 6 ਅੱਖਰ)</label>
                 <input type="password" id="userPassword" placeholder="******">
             </div>
-            <button type="submit" class="btn" id="authBtn">ਅੱਗੇ ਵਧੋ (OTP ਭੇਜੋ)</button>
+            <button type="submit" class="btn" id="authBtn">ਅੱਗੇ ਵਧੋ (OTP ਤਸਦੀਕ)</button>
         </form>
         <div class="toggle-link" id="toggleAuth" onclick="toggleAuthMode()">ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ</div>
     </div>
@@ -74,7 +73,7 @@
     <div id="otpModal" class="modal hidden">
         <div class="modal-content">
             <h3 id="otpModalTitle">ਮੋਬਾਈਲ OTP ਤਸਦੀਕ</h3>
-            <p id="otpModalDesc">ਤੁਹਾਡੇ ਨੰਬਰ 'ਤੇ OTP ਭੇਜਿਆ ਗਿਆ ਹੈ। (ਡੈਮੋ OTP ਹੇਠਾਂ ਦਿੱਤਾ ਹੈ)</p>
+            <p id="otpModalDesc">ਸੁਰੱਖਿਆ ਕੋਡ:</p>
             <div class="form-group">
                 <input type="text" id="enteredOtpInput" maxlength="4" placeholder="4 ਅੰਕਾਂ ਦਾ OTP ਭਰੋ" style="text-align: center; font-size: 18px; letter-spacing: 4px; font-weight: bold;">
             </div>
@@ -193,8 +192,8 @@
     const langData = {
         pa: {
             langBtn: "English",
-            registerTitle: "ਅਕਾਊਂਟ ਬਣਾਓ (OTP ਨਾਲ)", loginTitle: "ਲੌਗਇਨ ਕਰੋ",
-            lblRegisterName: "ਪੂਰਾ ਨਾਮ (ਸਹੀ ਨਾਮ)", lblRegisterEmail: "10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ", lblRegisterPass: "ਪਾਸਵਰਡ (ਘੱਟੋ-ਘੱਟ 6 ਅੱਖਰ)",
+            registerTitle: "ਅਕਾਊਂਟ ਬਣਾਓ (ਸੁਰੱਖਿਅਤ)", loginTitle: "ਲੌਗਇਨ ਕਰੋ",
+            lblRegisterName: "ਪੂਰਾ ਨਾਮ (ਘੱਟੋ-ਘੱਟ 3 ਅੱਖਰ)", lblRegisterEmail: "ਅਸਲੀ 10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ", lblRegisterPass: "ਪਾਸਵਰਡ (ਘੱਟੋ-ਘੱਟ 6 ਅੱਖਰ)",
             btnRegister: "ਅੱਗੇ ਵਧੋ (OTP ਭੇਜੋ)", btnLogin: "ਲੌਗਇਨ ਕਰੋ",
             toggleToLogin: "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ", toggleToReg: "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ",
             bannerMsg: "🎉 ਜੀ ਆਇਆਂ ਨੂੰ! ਟਾਸਕ ਪੂਰੇ ਕਰੋ ਅਤੇ ਪੈਸੇ ਕਮਾਓ।",
@@ -203,14 +202,14 @@
             btnStart: "ਸ਼ੁਰੂ ਕਰੋ", btnDone: "ਪੂਰਾ ਹੋ ਗਿਆ",
             lblWithdrawTitle: "ਪੈਸੇ ਕਢਵਾਓ (Withdraw Money)", lblMinWithdraw: "ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100",
             lblPaymentDetail: "Payment Detail (UPI ID / Mobile)", btnWithdrawSubmit: "Withdraw Request",
-            lblProfileTitle: "ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼", lblProfName: "ਪੂਰਾ ਨਾਮ", lblProfEmail: "ਮੋਬਾਈਲ ਨੰਬਰ", lblProfPhone: "ਵਧੇਰੇ ਜਾਣਕਾਰੀ (Phone)", lblProfUPI: "ਸੇਵ ਕੀਤੀ UPI ID",
+            lblProfileTitle: "ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼", lblProfName: "ਪੂਰਾ ਨਾਮ", lblProfEmail: "ਮੋਬਾਈਲ ਨੰਬਰ", lblProfPhone: "ਵਧੇਰੇ ਜਾਣਕਾਰੀ", lblProfUPI: "ਸੇਵ ਕੀਤੀ UPI ID",
             btnSaveProfile: "ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ", btnLogout: "ਲੌਗਆਊਟ (Logout)",
             navTxtHome: "ਟਾਸਕ", navTxtWallet: "ਵਾਲਿਟ", navTxtSettings: "ਸੈਟਿੰਗਜ਼"
         },
         en: {
             langBtn: "ਪੰਜਾਬੀ",
-            registerTitle: "Create Account (with OTP)", loginTitle: "Login",
-            lblRegisterName: "Full Name", lblRegisterEmail: "10-Digit Mobile Number", lblRegisterPass: "Password (Min 6 Chars)",
+            registerTitle: "Create Account (Secure)", loginTitle: "Login",
+            lblRegisterName: "Full Name (Min 3 Chars)", lblRegisterEmail: "Valid 10-Digit Mobile Number", lblRegisterPass: "Password (Min 6 Chars)",
             btnRegister: "Proceed (Send OTP)", btnLogin: "Login",
             toggleToLogin: "Already have an account? Login", toggleToReg: "Create a new account",
             bannerMsg: "🎉 Welcome! Complete tasks and earn money.",
@@ -233,9 +232,16 @@
         }
     };
 
-    function validatePhone(phone) {
-        const phoneRegex = /^[6-9]\d{9}$/;
-        return phoneRegex.test(phone);
+    function validateStrictPhone(phone) {
+        // Must be exactly 10 digits, start with 6, 7, 8, or 9, and NOT contain all same digits (like 0000000000 or 1111111111)
+        const regex = /^[6-9]\d{9}$/;
+        if (!regex.test(phone)) return false;
+        
+        // Check if all digits are the same (e.g. 9999999999)
+        const allSame = /^([0-9])\1{9}$/.test(phone);
+        if (allSame) return false;
+
+        return true;
     }
 
     function toggleLanguage() {
@@ -290,10 +296,10 @@
         const password = document.getElementById('userPassword').value.trim();
         const name = document.getElementById('userName').value.trim();
 
-        if (!validatePhone(phone)) {
+        if (!validateStrictPhone(phone)) {
             alert(currentLang === 'pa' 
-                ? "❌ ਸਹੀ 10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਭਰੋ (ਜੋ 6, 7, 8 ਜਾਂ 9 ਤੋਂ ਸ਼ੁਰੂ ਹੋਵੇ)!" 
-                : "❌ Enter a valid 10-digit mobile number starting with 6-9!");
+                ? "❌ ਗਲਤ ਜਾਂ ਫਰਜ਼ੀ ਨੰਬਰ! ਕਿرਪਾ ਕਰਕੇ ਕੋਈ ਅਸਲੀ 10-ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਭਰੋ (ਜੋ 6, 7, 8 ਜਾਂ 9 ਤੋਂ ਸ਼ੁਰੂ ਹੋਵੇ)।" 
+                : "❌ Invalid or fake number! Please enter a real 10-digit mobile number starting with 6-9.");
             return;
         }
 
@@ -311,27 +317,25 @@
                     localStorage.setItem('smartEarnUser', JSON.stringify(currentUser));
                     showMainApp();
                 } else { alert(currentLang === 'pa' ? "❌ ਗਲਤ ਪਾਸਵਰਡ!" : "❌ Incorrect Password!"); }
-            } else { alert(currentLang === 'pa' ? "❌ ਅਕਾਊਂਟ ਨਹੀਂ ਮਿਲਿਆ! ਪਹਿਲਾਂ ਰਜਿਸਟਰ ਕਰੋ।" : "❌ Account not found! Register first."); }
+            } else { alert(currentLang === 'pa' ? "❌ ਇਹ ਨੰਬਰ ਰਜਿਸਟਰਡ ਨਹੀਂ ਹੈ!" : "❌ Number not registered!"); }
         } else {
             if (!name || name.length < 3) { 
-                alert(currentLang === 'pa' ? "❌ ਆਪਣਾ ਪੂਰਾ ਸਹੀ ਨਾਮ ਭਰੋ!" : "❌ Enter your full valid name!"); 
+                alert(currentLang === 'pa' ? "❌ ਆਪਣਾ ਪੂਰਾ ਨਾਮ ਭਰੋ (ਘੱਟੋ-ਘੱਟ 3 ਅੱਖਰ)!" : "❌ Enter full name (min 3 chars)!"); 
                 return; 
             }
             
             const existingUser = localStorage.getItem('userData_' + phone);
             if(existingUser) {
-                alert(currentLang === 'pa' ? "⚠️ ਇਸ ਨੰਬਰ 'ਤੇ ਅਕਾਊਂਟ ਪਹਿਲਾਂ ਤੋਂ ਮੌਜੂਦ ਹੈ! ਲੌਗਇਨ ਕਰੋ।" : "⚠️ Account already exists with this number! Please login.");
+                alert(currentLang === 'pa' ? "⚠️ ਇਸ ਨੰਬਰ 'ਤੇ ਅਕਾਊਂਟ ਪਹਿਲਾਂ ਤੋਂ ਮੌਜੂਦ ਹੈ! ਲੌਗਇਨ ਕਰੋ।" : "⚠️ Account already exists! Please login.");
                 return;
             }
 
-            // Generate 4 digit OTP
             generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
             pendingUserData = { name: name, phone: phone, password: password, upi: '', balance: 0, earnings: 0, completedTasks: [] };
             
-            // Show OTP Modal with the code displayed for user
             document.getElementById('otpModalDesc').innerText = currentLang === 'pa' 
-                ? `ਤੁਹਾਡੇ ਨੰਬਰ ${phone} ਲਈ OTP ਆ ਗਿਆ ਹੈ: [ ${generatedOtp} ]` 
-                : `OTP sent to ${phone}: [ ${generatedOtp} ]`;
+                ? `ਨੰਬਰ ${phone} ਲਈ ਤਸਦੀਕੀ ਕੋਡ (OTP): [ ${generatedOtp} ]` 
+                : `Verification Code (OTP) for ${phone}: [ ${generatedOtp} ]`;
             document.getElementById('otpModal').classList.remove('hidden');
         }
     }
@@ -346,7 +350,7 @@
             showMainApp();
             alert(currentLang === 'pa' ? "🎉 ਅਕਾਊਂਟ ਸਫਲਤਾਪੂਰਵਕ ਬਣ ਗਿਆ ਹੈ!" : "🎉 Account created successfully!");
         } else {
-            alert(currentLang === 'pa' ? "❌ ਗਲਤ OTP! ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।" : "❌ Incorrect OTP! Try again.");
+            alert(currentLang === 'pa' ? "❌ ਗਲਤ OTP! ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।" : "❌ Incorrect OTP!");
         }
     }
 
