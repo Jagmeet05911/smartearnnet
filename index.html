@@ -3,35 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartEarn - App</title>
+    <title>SmartEarn - Official App</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background-color: #f4f7fe; color: #333; display: flex; justify-content: center; padding: 10px; }
-        .app-container { width: 100%; max-width: 480px; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; min-height: 90vh; display: flex; flex-direction: column; position: relative; padding-bottom: 70px; }
-        header { background: linear-gradient(135deg, #4f46e5, #3b82f6); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 20px; }
-        .lang-btn { background: rgba(255, 255, 255, 0.2); border: 1px solid white; color: white; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 10px; }
+        .app-container { width: 100%; max-width: 480px; background: #ffffff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); overflow: hidden; min-height: 90vh; display: flex; flex-direction: column; position: relative; padding-bottom: 75px; }
+        header { background: linear-gradient(135deg, #4f46e5, #3b82f6); color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 20px; font-weight: bold; }
+        .lang-btn { background: rgba(255, 255, 255, 0.2); border: 1px solid white; color: white; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; }
         .content-box { padding: 20px; flex: 1; }
         .hidden { display: none !important; }
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #555; font-weight: bold; }
-        .form-group input, .form-group select { width: 100%; padding: 11px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
-        .btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #4b5563; font-weight: bold; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; }
+        .btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
         .btn-success { background: #10b981; }
+        .btn-success:hover { background: #059669; }
         .toggle-link { text-align: center; margin-top: 15px; font-size: 14px; color: #4f46e5; cursor: pointer; text-decoration: underline; }
-        .balance-card { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; }
-        .balance-item h3 { font-size: 20px; margin-top: 5px; }
-        .section-title { font-size: 16px; margin-bottom: 12px; color: #1f2937; }
-        .task-card { background: #f9fafb; border: 1px solid #e5e7eb; padding: 12px 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .balance-card { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+        .balance-item h3 { font-size: 22px; margin-top: 5px; }
+        .section-title { font-size: 16px; margin-bottom: 12px; color: #1f2937; font-weight: bold; }
+        .task-card { background: #f9fafb; border: 1px solid #e5e7eb; padding: 14px; border-radius: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
         .task-info h4 { font-size: 14px; color: #111827; }
         .task-info p { font-size: 13px; color: #10b981; font-weight: bold; margin-top: 3px; }
-        .btn-small { padding: 8px 12px; font-size: 12px; width: auto; margin-top: 0; }
+        .btn-small { padding: 8px 14px; font-size: 13px; width: auto; margin-top: 0; }
         .btn-disabled { background: #9ca3af !important; cursor: not-allowed; }
-        .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-around; padding: 10px 0; }
+        .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-around; padding: 12px 0; }
         .nav-item { text-align: center; font-size: 12px; color: #6b7280; cursor: pointer; flex: 1; }
         .nav-item.active { color: #4f46e5; font-weight: bold; }
-        .nav-item div { font-size: 18px; margin-bottom: 2px; }
-        .logout-btn { background: #ef4444; margin-top: 25px; }
+        .nav-item div { font-size: 20px; margin-bottom: 2px; }
+        .logout-btn { background: #ef4444; margin-top: 20px; }
+        .banner { background: #e0e7ff; color: #3730a3; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 15px; text-align: center; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -39,30 +41,33 @@
 <div class="app-container">
     <header>
         <h1>💎 SmartEarn</h1>
-        <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">English</button>
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">English</button>
     </header>
 
+    <!-- Auth Box -->
     <div id="authBox" class="content-box">
-        <h2 id="authTitle" style="margin-bottom: 15px;">ਅਕਾਊਂਟ ਬਣਾਓ</h2>
+        <h2 id="authTitle" style="margin-bottom: 15px; color: #1f2937;">ਅਕਾਊਂਟ ਬਣਾਓ</h2>
         <form id="authForm" onsubmit="handleAuth(event)">
             <div class="form-group" id="nameGroup">
-                <label>ਪੂਰਾ ਨਾਮ</label>
-                <input type="text" id="userName" placeholder="ਨਾਮ ਲਿਖੋ">
+                <label id="lblRegisterName">ਪੂਰਾ ਨਾਮ</label>
+                <input type="text" id="userName" placeholder="ਆਪਣਾ ਨਾਮ ਲਿਖੋ">
             </div>
             <div class="form-group">
-                <label>ਈਮੇਲ / ਫੋਨ ਨੰਬਰ</label>
-                <input type="text" id="userEmail" placeholder="ਈਮੇਲ ਜਾਂ ਫੋਨ">
+                <label id="lblRegisterEmail">ਈਮੇਲ / ਮੋਬਾਈਲ</label>
+                <input type="text" id="userEmail" placeholder="ਈਮੇਲ ਜਾਂ ਫੋਨ ਨੰਬਰ">
             </div>
             <div class="form-group">
-                <label>ਪਾਸਵਰਡ</label>
-                <input type="password" id="userPassword" placeholder="ਪਾਸਵਰਡ ਲਿਖੋ">
+                <label id="lblRegisterPass">ਪਾਸਵਰਡ</label>
+                <input type="password" id="userPassword" placeholder="ਪਾਸਵਰਡ ਬਣਾਓ">
             </div>
             <button type="submit" class="btn" id="authBtn">ਰਜਿਸਟਰ ਕਰੋ</button>
         </form>
         <div class="toggle-link" id="toggleAuth" onclick="toggleAuthMode()">ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ</div>
     </div>
 
+    <!-- Home Tab -->
     <div id="tabHome" class="content-box hidden">
+        <div class="banner" id="bannerMsg">🎉 ਜੀ ਆਇਆਂ ਨੂੰ! ਟਾਸਕ ਪੂਰੇ ਕਰੋ ਅਤੇ ਪੈਸੇ ਕਮਾਓ।</div>
         <div class="balance-card">
             <div class="balance-item">
                 <span id="lblWalletBal">ਕੁੱਲ ਬੈਲੈਂਸ</span>
@@ -73,83 +78,89 @@
                 <h3 id="totalEarnings">₹0.00</h3>
             </div>
         </div>
-        <h3 class="section-title" id="lblTasksTitle">ਉਪਲਬਧ ਟਾਸਕ</h3>
+        <h3 class="section-title" id="lblTasksTitle">ਉਪਲਬਧ ਟਾਸਕ (Available Tasks)</h3>
+        
         <div class="task-card">
             <div class="task-info">
-                <h4>ਵੀਡੀਓ ਐਡ ਦੇਖੋ (15 ਸੈਕਿੰਡ)</h4>
+                <h4 id="t1Title">ਟਾਸਕ 1: ਵੀਡੀਓ ਐਡ ਦੇਖੋ (15s)</h4>
                 <p>+ ₹15.00</p>
             </div>
-            <button class="btn btn-small" id="task1Btn" onclick="startTask(1, 15, 15)">ਟਾਸਕ ਕਰੋ</button>
+            <button class="btn btn-small" id="task1Btn" onclick="startTask(1, 15, 15)">ਸ਼ੁਰੂ ਕਰੋ</button>
         </div>
+
         <div class="task-card">
             <div class="task-info">
-                <h4>ਸਪਾਂਸਰਡ ਆਫਰ ਵਿਜ਼ਿਟ ਕਰੋ</h4>
+                <h4 id="t2Title">ਟਾਸਕ 2: ਸਪਾਂਸਰਡ ਵੈੱਬਸਾਈਟ ਦੇਖੋ (20s)</h4>
                 <p>+ ₹25.00</p>
             </div>
-            <button class="btn btn-small" id="task2Btn" onclick="startTask(2, 20, 25)">ਟਾਸਕ ਕਰੋ</button>
+            <button class="btn btn-small" id="task2Btn" onclick="startTask(2, 20, 25)">ਸ਼ੁਰੂ ਕਰੋ</button>
         </div>
+
         <div class="task-card">
             <div class="task-info">
-                <h4>ਐਪ ਰਿਵਿਊ / ਸਰਵੇ ਪੂਰਾ ਕਰੋ</h4>
+                <h4 id="t3Title">ਟਾਸਕ 3: ਐਪ ਸਰਵੇ / ਸਮਾਰਟ ਆਫਰ (30s)</h4>
                 <p>+ ₹50.00</p>
             </div>
-            <button class="btn btn-small" id="task3Btn" onclick="startTask(3, 30, 50)">ਟਾਸਕ ਕਰੋ</button>
+            <button class="btn btn-small" id="task3Btn" onclick="startTask(3, 30, 50)">ਸ਼ੁਰੂ ਕਰੋ</button>
         </div>
     </div>
 
+    <!-- Wallet Tab -->
     <div id="tabWallet" class="content-box hidden">
-        <h3 class="section-title" id="lblWithdrawTitle">ਪੈਸੇ ਕਢਵਾਓ (Withdrawal)</h3>
+        <h3 class="section-title" id="lblWithdrawTitle">ਪੈਸੇ ਕਢਵਾਓ (Withdraw Money)</h3>
         <div style="background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; margin-bottom: 20px;">
-            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100</p>
+            <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;" id="lblMinWithdraw">ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100</p>
             <div class="form-group">
                 <label>Payment Method</label>
                 <select id="withdrawMethodSelect">
                     <option value="UPI">UPI (GPay / PhonePe / Paytm)</option>
                     <option value="Paytm">Paytm Number</option>
-                    <option value="Bank">Bank Account</option>
+                    <option value="Bank">Bank Account Transfer</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Payment Details</label>
+                <label id="lblPaymentDetail">Payment Detail (UPI ID / Mobile)</label>
                 <input type="text" id="withdrawDetailInput" placeholder="ਆਪਣੀ UPI ID ਪਾਓ">
             </div>
-            <button class="btn btn-success" onclick="withdrawMoney()">Withdraw Request</button>
+            <button class="btn btn-success" onclick="withdrawMoney()" id="btnWithdrawSubmit">Withdraw Request</button>
         </div>
     </div>
 
+    <!-- Settings Tab -->
     <div id="tabSettings" class="content-box hidden">
-        <h3 class="section-title">ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼</h3>
+        <h3 class="section-title" id="lblProfileTitle">ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼</h3>
         <form onsubmit="saveProfileSettings(event)" style="background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb;">
             <div class="form-group">
-                <label>ਪੂਰਾ ਨਾਮ</label>
+                <label id="lblProfName">ਪੂਰਾ ਨਾਮ</label>
                 <input type="text" id="editName">
             </div>
             <div class="form-group">
-                <label>ਈਮੇਲ</label>
-                <input type="text" id="editEmail" disabled style="background: #eee;">
+                <label id="lblProfEmail">ਈਮੇਲ</label>
+                <input type="text" id="editEmail" disabled style="background: #e5e7eb;">
             </div>
             <div class="form-group">
-                <label>ਫੋਨ ਨੰਬਰ</label>
-                <input type="text" id="editPhone" placeholder="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ">
+                <label id="lblProfPhone">ਮੋਬਾਈਲ ਨੰਬਰ</label>
+                <input type="text" id="editPhone" placeholder="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਲਿਖੋ">
             </div>
             <div class="form-group">
-                <label>UPI ID / Payment Details</label>
-                <input type="text" id="editUPI" placeholder="UPI ID ਸੇਵ ਕਰੋ">
+                <label id="lblProfUPI">ਸੇਵ ਕੀਤੀ UPI ID</label>
+                <input type="text" id="editUPI" placeholder="UPI ID ਪਾਓ">
             </div>
-            <button type="submit" class="btn">ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ</button>
+            <button type="submit" class="btn" id="btnSaveProfile">ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ</button>
         </form>
-        <button class="btn logout-btn" onclick="logout()">ਲੌਗਆਊਟ (Logout)</button>
+        <button class="btn logout-btn" onclick="logout()" id="btnLogout">ਲੌਗਆਊਟ (Logout)</button>
     </div>
 
+    <!-- Bottom Navigation -->
     <div id="bottomNav" class="bottom-nav hidden">
         <div class="nav-item active" id="navHome" onclick="switchTab('home')">
-            <div>🏠</div><span>ਟਾਸਕ</span>
+            <div>🏠</div><span id="navTxtHome">ਟਾਸਕ</span>
         </div>
         <div class="nav-item" id="navWallet" onclick="switchTab('wallet')">
-            <div>💳</div><span>ਵਾਲਿਟ</span>
+            <div>💳</div><span id="navTxtWallet">ਵਾਲਿਟ</span>
         </div>
         <div class="nav-item" id="navSettings" onclick="switchTab('settings')">
-            <div>⚙️</div><span>ਸੈਟਿੰਗਜ਼</span>
+            <div>⚙️</div><span id="navTxtSettings">ਸੈਟਿੰਗਜ਼</span>
         </div>
     </div>
 </div>
@@ -157,6 +168,42 @@
 <script>
     let isLoginMode = false;
     let currentUser = null;
+    let currentLang = 'pa';
+
+    const langData = {
+        pa: {
+            langBtn: "English",
+            registerTitle: "ਅਕਾਊਂਟ ਬਣਾਓ", loginTitle: "ਲੌਗਇਨ ਕਰੋ",
+            lblRegisterName: "ਪੂਰਾ ਨਾਮ", lblRegisterEmail: "ਈਮੇਲ / ਮੋਬਾਈਲ", lblRegisterPass: "ਪਾਸਵਰਡ",
+            btnRegister: "ਰਜਿਸਟਰ ਕਰੋ", btnLogin: "ਲੌਗਇਨ",
+            toggleToLogin: "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ", toggleToReg: "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ",
+            bannerMsg: "🎉 ਜੀ ਆਇਆਂ ਨੂੰ! ਟਾਸਕ ਪੂਰੇ ਕਰੋ ਅਤੇ ਪੈਸੇ ਕਮਾਓ।",
+            lblWalletBal: "ਕੁੱਲ ਬੈਲੈਂਸ", lblTotalEarn: "ਕੁੱਲ ਕਮਾਈ", lblTasksTitle: "ਉਪਲਬਧ ਟਾਸਕ",
+            t1Title: "ਟਾਸਕ 1: ਵੀਡੀਓ ਐਡ ਦੇਖੋ (15s)", t2Title: "ਟਾਸਕ 2: ਸਪਾਂਸਰਡ ਵੈੱਬਸਾਈਟ ਦੇਖੋ (20s)", t3Title: "ਟਾਸਕ 3: ਐਪ ਸਰਵੇ / ਸਮਾਰਟ ਆਫਰ (30s)",
+            btnStart: "ਸ਼ੁਰੂ ਕਰੋ", btnDone: "ਪੂਰਾ ਹੋ ਗਿਆ",
+            lblWithdrawTitle: "ਪੈਸੇ ਕਢਵਾਓ (Withdraw Money)", lblMinWithdraw: "ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100",
+            lblPaymentDetail: "Payment Detail (UPI ID / Mobile)", btnWithdrawSubmit: "Withdraw Request",
+            lblProfileTitle: "ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼", lblProfName: "ਪੂਰਾ ਨਾਮ", lblProfEmail: "ਈਮੇਲ", lblProfPhone: "ਮੋਬਾਈਲ ਨੰਬਰ", lblProfUPI: "ਸੇਵ ਕੀਤੀ UPI ID",
+            btnSaveProfile: "ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ", btnLogout: "ਲੌਗਆਊਟ (Logout)",
+            navTxtHome: "ਟਾਸਕ", navTxtWallet: "ਵਾਲਿਟ", navTxtSettings: "ਸੈਟਿੰਗਜ਼"
+        },
+        en: {
+            langBtn: "ਪੰਜਾਬੀ",
+            registerTitle: "Create Account", loginTitle: "Login",
+            lblRegisterName: "Full Name", lblRegisterEmail: "Email / Mobile", lblRegisterPass: "Password",
+            btnRegister: "Register", btnLogin: "Login",
+            toggleToLogin: "Already have an account? Login", toggleToReg: "Create a new account",
+            bannerMsg: "🎉 Welcome! Complete tasks and earn money.",
+            lblWalletBal: "Wallet Balance", lblTotalEarn: "Total Earnings", lblTasksTitle: "Available Tasks",
+            t1Title: "Task 1: Watch Video Ad (15s)", t2Title: "Task 2: Visit Sponsored Site (20s)", t3Title: "Task 3: App Survey / Offer (30s)",
+            btnStart: "Start Task", btnDone: "Completed",
+            lblWithdrawTitle: "Withdraw Money", lblMinWithdraw: "Minimum Limit: ₹100",
+            lblPaymentDetail: "Payment Detail (UPI ID / Mobile)", btnWithdrawSubmit: "Submit Withdrawal",
+            lblProfileTitle: "Profile & Settings", lblProfName: "Full Name", lblProfEmail: "Email", lblProfPhone: "Mobile Number", lblProfUPI: "Saved UPI ID",
+            btnSaveProfile: "Save Settings", btnLogout: "Logout",
+            navTxtHome: "Tasks", navTxtWallet: "Wallet", navTxtSettings: "Settings"
+        }
+    };
 
     window.onload = function() {
         const savedUser = localStorage.getItem('smartEarnUser');
@@ -166,12 +213,50 @@
         }
     };
 
+    function toggleLanguage() {
+        currentLang = (currentLang === 'pa') ? 'en' : 'pa';
+        const d = langData[currentLang];
+
+        document.getElementById('langBtn').innerText = d.langBtn;
+        document.getElementById('lblRegisterName').innerText = d.lblRegisterName;
+        document.getElementById('lblRegisterEmail').innerText = d.lblRegisterEmail;
+        document.getElementById('lblRegisterPass').innerText = d.lblRegisterPass;
+        document.getElementById('bannerMsg').innerText = d.bannerMsg;
+        document.getElementById('lblWalletBal').innerText = d.lblWalletBal;
+        document.getElementById('lblTotalEarn').innerText = d.lblTotalEarn;
+        document.getElementById('lblTasksTitle').innerText = d.lblTasksTitle;
+        document.getElementById('t1Title').innerText = d.t1Title;
+        document.getElementById('t2Title').innerText = d.t2Title;
+        document.getElementById('t3Title').innerText = d.t3Title;
+        document.getElementById('lblWithdrawTitle').innerText = d.lblWithdrawTitle;
+        document.getElementById('lblMinWithdraw').innerText = d.lblMinWithdraw;
+        document.getElementById('lblPaymentDetail').innerText = d.lblPaymentDetail;
+        document.getElementById('btnWithdrawSubmit').innerText = d.btnWithdrawSubmit;
+        document.getElementById('lblProfileTitle').innerText = d.lblProfileTitle;
+        document.getElementById('lblProfName').innerText = d.lblProfName;
+        document.getElementById('lblProfEmail').innerText = d.lblProfEmail;
+        document.getElementById('lblProfPhone').innerText = d.lblProfPhone;
+        document.getElementById('lblProfUPI').innerText = d.lblProfUPI;
+        document.getElementById('btnSaveProfile').innerText = d.btnSaveProfile;
+        document.getElementById('btnLogout').innerText = d.btnLogout;
+        document.getElementById('navTxtHome').innerText = d.navTxtHome;
+        document.getElementById('navTxtWallet').innerText = d.navTxtWallet;
+        document.getElementById('navTxtSettings').innerText = d.navTxtSettings;
+
+        document.getElementById('authTitle').innerText = isLoginMode ? d.loginTitle : d.registerTitle;
+        document.getElementById('authBtn').innerText = isLoginMode ? d.btnLogin : d.btnRegister;
+        document.getElementById('toggleAuth').innerText = isLoginMode ? d.toggleToReg : d.toggleToLogin;
+
+        updateUI();
+    }
+
     function toggleAuthMode() {
         isLoginMode = !isLoginMode;
-        document.getElementById('authTitle').innerText = isLoginMode ? "ਲੌਗਇਨ ਕਰੋ" : "ਅਕਾਊਂਟ ਬਣਾਓ";
+        const d = langData[currentLang];
+        document.getElementById('authTitle').innerText = isLoginMode ? d.loginTitle : d.registerTitle;
         document.getElementById('nameGroup').style.display = isLoginMode ? "none" : "block";
-        document.getElementById('authBtn').innerText = isLoginMode ? "ਲੌਗਇਨ" : "ਰਜਿਸਟਰ ਕਰੋ";
-        document.getElementById('toggleAuth').innerText = isLoginMode ? "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ" : "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ";
+        document.getElementById('authBtn').innerText = isLoginMode ? d.btnLogin : d.btnRegister;
+        document.getElementById('toggleAuth').innerText = isLoginMode ? d.toggleToReg : d.toggleToLogin;
     }
 
     function handleAuth(event) {
@@ -181,7 +266,7 @@
         const name = document.getElementById('userName').value.trim();
 
         if (!email || !password) {
-            alert("ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਭਰੋ!");
+            alert(currentLang === 'pa' ? "ਈਮੇਲ/ਫੋਨ ਅਤੇ ਪਾਸਵਰਡ ਭਰੋ!" : "Please fill Email/Phone and Password!");
             return;
         }
 
@@ -193,10 +278,10 @@
                     currentUser = user;
                     localStorage.setItem('smartEarnUser', JSON.stringify(currentUser));
                     showMainApp();
-                } else { alert("ਗਲਤ ਪਾਸਵਰਡ!"); }
-            } else { alert("ਅਕਾਊਂਟ ਨਹੀਂ ਮਿਲਿਆ!"); }
+                } else { alert(currentLang === 'pa' ? "ਗਲਤ ਪਾਸਵਰਡ!" : "Incorrect Password!"); }
+            } else { alert(currentLang === 'pa' ? "ਅਕਾਊਂਟ ਨਹੀਂ ਮਿਲਿਆ!" : "Account not found!"); }
         } else {
-            if (!name) { alert("ਨਾਮ ਭਰੋ!"); return; }
+            if (!name) { alert(currentLang === 'pa' ? "ਨਾਮ ਭਰੋ!" : "Please enter your name!"); return; }
             currentUser = { name: name, email: email, password: password, phone: '', upi: '', balance: 0, earnings: 0, completedTasks: [] };
             saveUserData();
             showMainApp();
@@ -243,14 +328,21 @@
     }
 
     function updateUI() {
+        if (!currentUser) return;
+        const d = langData[currentLang];
         document.getElementById('walletBalance').innerText = '₹' + currentUser.balance.toFixed(2);
         document.getElementById('totalEarnings').innerText = '₹' + currentUser.earnings.toFixed(2);
+        
         [1, 2, 3].forEach(taskId => {
             const btn = document.getElementById('task' + taskId + 'Btn');
             if (currentUser.completedTasks && currentUser.completedTasks.includes(taskId)) {
-                btn.innerText = "ਪੂਰਾ ਹੋ ਗਿਆ";
+                btn.innerText = d.btnDone;
                 btn.classList.add('btn-disabled');
                 btn.disabled = true;
+            } else {
+                btn.innerText = d.btnStart;
+                btn.classList.remove('btn-disabled');
+                btn.disabled = false;
             }
         });
     }
@@ -270,16 +362,22 @@
                 currentUser.completedTasks.push(taskId);
                 saveUserData();
                 updateUI();
-                alert(`ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।`);
+                alert(currentLang === 'pa' ? `ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।` : `Congratulations! You earned ₹${reward}.`);
             }
         }, 1000);
     }
 
     function withdrawMoney() {
         const details = document.getElementById('withdrawDetailInput').value.trim();
-        if (!details) { alert("ਪੇਮੈਂਟ ਡਿਟੇਲ ਭਰੋ!"); return; }
-        if (currentUser.balance < 100) { alert("ਘੱਟੋ-ਘੱਟ ₹100 ਹੋਣ 'ਤੇ ਹੀ Withdraw ਹੋਵੇਗਾ।"); return; }
-        alert(`ਤੁਹਾਡੀ ₹${currentUser.balance} ਦੀ ਰਿਕਵੈਸਟ ਦਰਜ ਹੋ ਗਈ ਹੈ!`);
+        if (!details) {
+            alert(currentLang === 'pa' ? "ਪੇਮੈਂਟ ਡਿਟੇਲ ਭਰੋ!" : "Enter payment details!");
+            return;
+        }
+        if (currentUser.balance < 100) {
+            alert(currentLang === 'pa' ? "ਘੱਟੋ-ਘੱਟ ₹100 ਹੋਣ 'ਤੇ ਹੀ Withdraw ਹੋਵੇਗਾ।" : "Minimum ₹100 required to withdraw.");
+            return;
+        }
+        alert(currentLang === 'pa' ? `ਤੁਹਾਡੀ ₹${currentUser.balance} ਦੀ ਰਿਕਵੈਸਟ ਦਰਜ ਹੋ ਗਈ ਹੈ!` : `Your request for ₹${currentUser.balance} submitted!`);
         currentUser.balance = 0;
         saveUserData();
         updateUI();
@@ -291,7 +389,7 @@
         currentUser.phone = document.getElementById('editPhone').value.trim();
         currentUser.upi = document.getElementById('editUPI').value.trim();
         saveUserData();
-        alert("ਸੈਟਿੰਗਜ਼ ਸੇਵ ਹੋ ਗਈਆਂ ਹਨ!");
+        alert(currentLang === 'pa' ? "ਸੈਟਿੰਗਜ਼ ਸੇਵ ਹੋ ਗਈਆਂ ਹਨ!" : "Settings saved successfully!");
     }
 
     function logout() {
