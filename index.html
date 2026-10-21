@@ -9,7 +9,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         body {
@@ -25,7 +25,7 @@
             max-width: 480px;
             background: #ffffff;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
@@ -38,7 +38,6 @@
 
         header h1 {
             font-size: 24px;
-            font-weight: 700;
         }
 
         .auth-box, .dashboard {
@@ -57,13 +56,13 @@
             display: block;
             font-size: 14px;
             margin-bottom: 5px;
-            color: #666;
+            color: #555;
         }
 
         .form-group input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 15px;
             outline: none;
@@ -79,11 +78,11 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            margin-top: 10px;
         }
 
         .btn:hover {
-            background: #4338ca;
+            background: #3b82f6;
         }
 
         .toggle-link {
@@ -92,9 +91,9 @@
             font-size: 14px;
             color: #4f46e5;
             cursor: pointer;
+            text-decoration: underline;
         }
 
-        /* Wallet Card */
         .balance-card {
             background: linear-gradient(135deg, #10b981, #059669);
             color: white;
@@ -110,7 +109,6 @@
             margin-top: 5px;
         }
 
-        /* Task List */
         .section-title {
             font-size: 18px;
             margin-bottom: 15px;
@@ -144,6 +142,7 @@
             padding: 8px 14px;
             font-size: 13px;
             width: auto;
+            margin-top: 0;
         }
 
         .btn-disabled {
@@ -168,22 +167,25 @@
     <div id="authBox" class="auth-box">
         <h2 id="authTitle" style="margin-bottom: 15px;">ਅਕਾਊਂਟ ਬਣਾਓ</h2>
         
-        <div class="form-group" id="nameGroup">
-            <label>ਪੂਰਾ ਨਾਮ</label>
-            <input type="text" id="userName" placeholder="ਆਪਣਾ ਨਾਮ ਲਿਖੋ">
-        </div>
+        <form id="authForm" onsubmit="handleAuth(event)">
+            <div class="form-group" id="nameGroup">
+                <label>ਪੂਰਾ ਨਾਮ</label>
+                <input type="text" id="userName" placeholder="ਆਪਣਾ ਨਾਮ ਲਿਖੋ">
+            </div>
 
-        <div class="form-group">
-            <label>ਈਮੇਲ / ਫੋਨ ਨੰਬਰ</label>
-            <input type="text" id="userEmail" placeholder="ਈਮੇਲ ਜਾਂ ਫੋਨ ਨੰਬਰ">
-        </div>
+            <div class="form-group">
+                <label>ਈਮੇਲ / ਫੋਨ ਨੰਬਰ</label>
+                <input type="text" id="userEmail" placeholder="ਈਮੇਲ ਜਾਂ ਫੋਨ ਨੰਬਰ required">
+            </div>
 
-        <div class="form-group">
-            <label>ਪਾਸਵਰਡ</label>
-            <input type="password" id="userPassword" placeholder="ਪਾਸਵਰਡ ਲਿਖੋ">
-        </div>
+            <div class="form-group">
+                <label>ਪਾਸਵਰਡ</label>
+                <input type="password" id="userPassword" placeholder="ਪਾਸਵਰਡ ਲਿਖੋ required">
+            </div>
 
-        <button class="btn" id="authBtn" onclick="handleAuth()">ਰਜਿਸਟਰ ਕਰੋ</button>
+            <button type="submit" class="btn" id="authBtn">ਰਜਿਸਟਰ ਕਰੋ</button>
+        </form>
+
         <div class="toggle-link" id="toggleAuth" onclick="toggleAuthMode()">ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ</div>
     </div>
 
@@ -247,10 +249,9 @@
 </div>
 
 <script>
-    let isLogin = false;
+    let isLoginMode = false;
     let currentUser = null;
 
-    // Check if user is logged in
     window.onload = function() {
         const savedUser = localStorage.getItem('smartEarnUser');
         if (savedUser) {
@@ -260,24 +261,26 @@
     };
 
     function toggleAuthMode() {
-        isLogin = !isLogin;
-        document.getElementById('authTitle').innerText = isLogin ? "ਲੌਗਇਨ ਕਰੋ" : "ਅਕਾਊਂਟ ਬਣਾਓ";
-        document.getElementById('nameGroup').style.display = isLogin ? "none" : "block";
-        document.getElementById('authBtn').innerText = isLogin ? "ਲੌਗਇਨ" : "ਰਜਿਸਟਰ ਕਰੋ";
-        document.getElementById('toggleAuth').innerText = isLogin ? "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ" : "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ";
+        isLoginMode = !isLoginMode;
+        document.getElementById('authTitle').innerText = isLoginMode ? "ਲੌਗਇਨ ਕਰੋ" : "ਅਕਾਊਂਟ ਬਣਾਓ";
+        document.getElementById('nameGroup').style.display = isLoginMode ? "none" : "block";
+        document.getElementById('authBtn').innerText = isLoginMode ? "ਲੌਗਇਨ" : "ਰਜਿਸਟਰ ਕਰੋ";
+        document.getElementById('toggleAuth').innerText = isLoginMode ? "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ" : "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ";
     }
 
-    function handleAuth() {
+    function handleAuth(event) {
+        event.preventDefault(); // Prevents page refresh
+
         const email = document.getElementById('userEmail').value.trim();
         const password = document.getElementById('userPassword').value.trim();
         const name = document.getElementById('userName').value.trim();
 
         if (!email || !password) {
-            alert("ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੀ ਜਾਣਕਾਰੀ ਭਰੋ!");
+            alert("ਕਿਰਪਾ ਕਰਕੇ ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਭਰੋ!");
             return;
         }
 
-        if (isLogin) {
+        if (isLoginMode) {
             const storedData = localStorage.getItem('userData_' + email);
             if (storedData) {
                 const user = JSON.parse(storedData);
@@ -293,7 +296,7 @@
             }
         } else {
             if (!name) {
-                alert("ਕਿਰਪਾ ਕਰਕੇ ਨਾਮ ਭਰੋ!");
+                alert("ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਨਾਮ ਭਰੋ!");
                 return;
             }
             currentUser = {
@@ -305,7 +308,6 @@
                 completedTasks: []
             };
             saveUserData();
-            localStorage.setItem('smartEarnUser', JSON.stringify(currentUser));
             showDashboard();
         }
     }
@@ -328,10 +330,9 @@
         document.getElementById('walletBalance').innerText = '₹' + currentUser.balance.toFixed(2);
         document.getElementById('totalEarnings').innerText = '₹' + currentUser.earnings.toFixed(2);
 
-        // Update Task Buttons
         [1, 2, 3].forEach(taskId => {
             const btn = document.getElementById('task' + taskId + 'Btn');
-            if (currentUser.completedTasks.includes(taskId)) {
+            if (currentUser.completedTasks && currentUser.completedTasks.includes(taskId)) {
                 btn.innerText = "ਪੂਰਾ ਹੋ ਗਿਆ";
                 btn.classList.add('btn-disabled');
                 btn.disabled = true;
@@ -352,10 +353,11 @@
                 clearInterval(timer);
                 currentUser.balance += reward;
                 currentUser.earnings += reward;
+                if(!currentUser.completedTasks) currentUser.completedTasks = [];
                 currentUser.completedTasks.push(taskId);
                 saveUserData();
                 updateUI();
-                alert(`ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।`);
+                alert(` ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।`);
             }
         }, 1000);
     }
