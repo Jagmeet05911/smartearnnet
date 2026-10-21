@@ -5,205 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartEarn - App</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f4f7fe;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 480px;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            overflow: hidden;
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            padding-bottom: 70px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #4f46e5, #3b82f6);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 20px;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid white;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .content-box {
-            padding: 20px;
-            flex: 1;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background: #4f46e5;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .btn-success {
-            background: #10b981;
-        }
-
-        .toggle-link {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-            color: #4f46e5;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .balance-card {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .balance-item h3 {
-            font-size: 20px;
-            margin-top: 5px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            margin-bottom: 12px;
-            color: #1f2937;
-        }
-
-        .task-card {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .task-info h4 {
-            font-size: 14px;
-            color: #111827;
-        }
-
-        .task-info p {
-            font-size: 13px;
-            color: #10b981;
-            font-weight: bold;
-            margin-top: 3px;
-        }
-
-        .btn-small {
-            padding: 8px 12px;
-            font-size: 12px;
-            width: auto;
-            margin-top: 0;
-        }
-
-        .btn-disabled {
-            background: #9ca3af !important;
-            cursor: not-allowed;
-        }
-
-        /* Bottom Nav Navigation Bar */
-        .bottom-nav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-        }
-
-        .nav-item {
-            text-align: center;
-            font-size: 12px;
-            color: #6b7280;
-            cursor: pointer;
-            flex: 1;
-        }
-
-        .nav-item.active {
-            color: #4f46e5;
-            font-weight: bold;
-        }
-
-        .nav-item div {
-            font-size: 18px;
-            margin-bottom: 2px;
-        }
-
-        .logout-btn {
-            background: #ef4444;
-            margin-top: 25px;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f7fe; color: #333; display: flex; justify-content: center; padding: 10px; }
+        .app-container { width: 100%; max-width: 480px; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; min-height: 90vh; display: flex; flex-direction: column; position: relative; padding-bottom: 70px; }
+        header { background: linear-gradient(135deg, #4f46e5, #3b82f6); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 20px; }
+        .lang-btn { background: rgba(255, 255, 255, 0.2); border: 1px solid white; color: white; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; }
+        .content-box { padding: 20px; flex: 1; }
+        .hidden { display: none !important; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #555; font-weight: bold; }
+        .form-group input, .form-group select { width: 100%; padding: 11px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
+        .btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-success { background: #10b981; }
+        .toggle-link { text-align: center; margin-top: 15px; font-size: 14px; color: #4f46e5; cursor: pointer; text-decoration: underline; }
+        .balance-card { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        .balance-item h3 { font-size: 20px; margin-top: 5px; }
+        .section-title { font-size: 16px; margin-bottom: 12px; color: #1f2937; }
+        .task-card { background: #f9fafb; border: 1px solid #e5e7eb; padding: 12px 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .task-info h4 { font-size: 14px; color: #111827; }
+        .task-info p { font-size: 13px; color: #10b981; font-weight: bold; margin-top: 3px; }
+        .btn-small { padding: 8px 12px; font-size: 12px; width: auto; margin-top: 0; }
+        .btn-disabled { background: #9ca3af !important; cursor: not-allowed; }
+        .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-around; padding: 10px 0; }
+        .nav-item { text-align: center; font-size: 12px; color: #6b7280; cursor: pointer; flex: 1; }
+        .nav-item.active { color: #4f46e5; font-weight: bold; }
+        .nav-item div { font-size: 18px; margin-bottom: 2px; }
+        .logout-btn { background: #ef4444; margin-top: 25px; }
     </style>
 </head>
 <body>
@@ -214,33 +42,26 @@
         <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">English</button>
     </header>
 
-    <!-- Sign Up / Login Form -->
     <div id="authBox" class="content-box">
         <h2 id="authTitle" style="margin-bottom: 15px;">ਅਕਾਊਂਟ ਬਣਾਓ</h2>
-        
         <form id="authForm" onsubmit="handleAuth(event)">
             <div class="form-group" id="nameGroup">
-                <label id="lblRegisterName">ਪੂਰਾ ਨਾਮ</label>
+                <label>ਪੂਰਾ ਨਾਮ</label>
                 <input type="text" id="userName" placeholder="ਨਾਮ ਲਿਖੋ">
             </div>
-
             <div class="form-group">
-                <label id="lblRegisterEmail">ਈਮੇਲ / ਫੋਨ ਨੰਬਰ</label>
+                <label>ਈਮੇਲ / ਫੋਨ ਨੰਬਰ</label>
                 <input type="text" id="userEmail" placeholder="ਈਮੇਲ ਜਾਂ ਫੋਨ">
             </div>
-
             <div class="form-group">
-                <label id="lblRegisterPass">ਪਾਸਵਰਡ</label>
+                <label>ਪਾਸਵਰਡ</label>
                 <input type="password" id="userPassword" placeholder="ਪਾਸਵਰਡ ਲਿਖੋ">
             </div>
-
             <button type="submit" class="btn" id="authBtn">ਰਜਿਸਟਰ ਕਰੋ</button>
         </form>
-
         <div class="toggle-link" id="toggleAuth" onclick="toggleAuthMode()">ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ</div>
     </div>
 
-    <!-- MAIN DASHBOARD (Tab 1: Tasks) -->
     <div id="tabHome" class="content-box hidden">
         <div class="balance-card">
             <div class="balance-item">
@@ -252,162 +73,90 @@
                 <h3 id="totalEarnings">₹0.00</h3>
             </div>
         </div>
-
         <h3 class="section-title" id="lblTasksTitle">ਉਪਲਬਧ ਟਾਸਕ</h3>
-
         <div class="task-card">
             <div class="task-info">
-                <h4 id="task1Title">ਵੀਡੀਓ ਐਡ ਦੇਖੋ (15 ਸੈਕਿੰਡ)</h4>
+                <h4>ਵੀਡੀਓ ਐਡ ਦੇਖੋ (15 ਸੈਕਿੰਡ)</h4>
                 <p>+ ₹15.00</p>
             </div>
             <button class="btn btn-small" id="task1Btn" onclick="startTask(1, 15, 15)">ਟਾਸਕ ਕਰੋ</button>
         </div>
-
         <div class="task-card">
             <div class="task-info">
-                <h4 id="task2Title">ਸਪਾਂਸਰਡ ਆਫਰ ਵਿਜ਼ਿਟ ਕਰੋ</h4>
+                <h4>ਸਪਾਂਸਰਡ ਆਫਰ ਵਿਜ਼ਿਟ ਕਰੋ</h4>
                 <p>+ ₹25.00</p>
             </div>
             <button class="btn btn-small" id="task2Btn" onclick="startTask(2, 20, 25)">ਟਾਸਕ ਕਰੋ</button>
         </div>
-
         <div class="task-card">
             <div class="task-info">
-                <h4 id="task3Title">ਐਪ ਰਿਵਿਊ / ਸਰਵੇ ਪੂਰਾ ਕਰੋ</h4>
+                <h4>ਐਪ ਰਿਵਿਊ / ਸਰਵੇ ਪੂਰਾ ਕਰੋ</h4>
                 <p>+ ₹50.00</p>
             </div>
             <button class="btn btn-small" id="task3Btn" onclick="startTask(3, 30, 50)">ਟਾਸਕ ਕਰੋ</button>
         </div>
     </div>
 
-    <!-- WALLET TAB (Tab 2: Withdraw) -->
     <div id="tabWallet" class="content-box hidden">
         <h3 class="section-title" id="lblWithdrawTitle">ਪੈਸੇ ਕਢਵਾਓ (Withdrawal)</h3>
-        
         <div style="background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; margin-bottom: 20px;">
-            <p style="font-size: 13px; color: #666; margin-bottom: 10px;" id="lblMinWithdraw">ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100</p>
-            
+            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100</p>
             <div class="form-group">
-                <label id="lblPaymentMethod">Payment Method</label>
-                <select id="withdrawMethodSelect" onchange="updateWithdrawInput()">
-                    <option value="UPI">UPI (Google Pay / PhonePe / Paytm)</option>
+                <label>Payment Method</label>
+                <select id="withdrawMethodSelect">
+                    <option value="UPI">UPI (GPay / PhonePe / Paytm)</option>
                     <option value="Paytm">Paytm Number</option>
                     <option value="Bank">Bank Account</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label id="lblPayDetails">Payment Details</label>
+                <label>Payment Details</label>
                 <input type="text" id="withdrawDetailInput" placeholder="ਆਪਣੀ UPI ID ਪਾਓ">
             </div>
-
-            <button class="btn btn-success" onclick="withdrawMoney()" id="btnWithdrawNow">Withdraw Request</button>
+            <button class="btn btn-success" onclick="withdrawMoney()">Withdraw Request</button>
         </div>
     </div>
 
-    <!-- PROFILE & SETTINGS TAB (Tab 3: Settings) -->
     <div id="tabSettings" class="content-box hidden">
-        <h3 class="section-title" id="lblProfileTitle">ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼</h3>
-
+        <h3 class="section-title">ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼</h3>
         <form onsubmit="saveProfileSettings(event)" style="background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb;">
             <div class="form-group">
-                <label id="lblProfName">ਪੂਰਾ ਨਾਮ</label>
+                <label>ਪੂਰਾ ਨਾਮ</label>
                 <input type="text" id="editName">
             </div>
-
             <div class="form-group">
-                <label id="lblProfEmail">ਈਮੇਲ</label>
+                <label>ਈਮੇਲ</label>
                 <input type="text" id="editEmail" disabled style="background: #eee;">
             </div>
-
             <div class="form-group">
-                <label id="lblProfPhone">ਫੋਨ ਨੰਬਰ</label>
+                <label>ਫੋਨ ਨੰਬਰ</label>
                 <input type="text" id="editPhone" placeholder="ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ">
             </div>
-
             <div class="form-group">
-                <label id="lblProfPass">ਨਵਾਂ ਪਾਸਵਰਡ</label>
-                <input type="password" id="editPassword" placeholder="ਪਾਸਵਰਡ ਬਦਲੋ (Optional)">
-            </div>
-
-            <div class="form-group">
-                <label id="lblProfUPI">ਡਿਫਾਲਟ UPI ID / Payment Info</label>
+                <label>UPI ID / Payment Details</label>
                 <input type="text" id="editUPI" placeholder="UPI ID ਸੇਵ ਕਰੋ">
             </div>
-
-            <button type="submit" class="btn" id="btnSaveProfile">ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ</button>
+            <button type="submit" class="btn">ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ</button>
         </form>
-
-        <button class="btn logout-btn" onclick="logout()" id="btnLogout">ਲੌਗਆਊਟ (Logout)</button>
+        <button class="btn logout-btn" onclick="logout()">ਲੌਗਆਊਟ (Logout)</button>
     </div>
 
-    <!-- BOTTOM NAVIGATION -->
     <div id="bottomNav" class="bottom-nav hidden">
         <div class="nav-item active" id="navHome" onclick="switchTab('home')">
-            <div>🏠</div>
-            <span id="navHomeText">ਟਾਸਕ</span>
+            <div>🏠</div><span>ਟਾਸਕ</span>
         </div>
         <div class="nav-item" id="navWallet" onclick="switchTab('wallet')">
-            <div>💳</div>
-            <span id="navWalletText">ਵਾਲਿਟ</span>
+            <div>💳</div><span>ਵਾਲਿਟ</span>
         </div>
         <div class="nav-item" id="navSettings" onclick="switchTab('settings')">
-            <div>⚙️</div>
-            <span id="navSettingsText">ਸੈਟਿੰਗਜ਼</span>
+            <div>⚙️</div><span>ਸੈਟਿੰਗਜ਼</span>
         </div>
     </div>
-
 </div>
 
 <script>
-    let currentLang = 'pa'; // 'pa' or 'en'
     let isLoginMode = false;
     let currentUser = null;
-
-    const translations = {
-        pa: {
-            registerTitle: "ਅਕਾਊਂਟ ਬਣਾਓ",
-            loginTitle: "ਲੌਗਇਨ ਕਰੋ",
-            registerBtn: "ਰਜਿਸਟਰ ਕਰੋ",
-            loginBtn: "ਲੌਗਇਨ",
-            toggleToLogin: "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ",
-            toggleToRegister: "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ",
-            walletBal: "ਕੁੱਲ ਬੈਲੈਂਸ",
-            totalEarn: "ਕੁੱਲ ਕਮਾਈ",
-            tasksTitle: "ਉਪਲਬਧ ਟਾਸਕ",
-            withdrawTitle: "ਪੈਸੇ ਕਢਵਾਓ (Withdrawal)",
-            minWithdraw: "ਘੱਟੋ-ਘੱਟ ਲਿਮਿਟ: ₹100",
-            profileTitle: "ਪ੍ਰੋਫਾਈਲ ਅਤੇ ਸੈਟਿੰਗਜ਼",
-            saveSettings: "ਸੈਟਿੰਗਜ਼ ਸੇਵ ਕਰੋ",
-            logout: "ਲੌਗਆਊਟ",
-            navHome: "ਟਾਸਕ",
-            navWallet: "ਵਾਲਿਟ",
-            navSettings: "ਸੈਟਿੰਗਜ਼",
-            completed: "ਪੂਰਾ ਹੋ ਗਿਆ",
-            doTask: "ਟਾਸਕ ਕਰੋ"
-        },
-        en: {
-            registerTitle: "Create Account",
-            loginTitle: "Login",
-            registerBtn: "Register",
-            loginBtn: "Login",
-            toggleToLogin: "Already have an account? Login",
-            toggleToRegister: "Create New Account",
-            walletBal: "Total Balance",
-            totalEarn: "Total Earnings",
-            tasksTitle: "Available Tasks",
-            withdrawTitle: "Withdraw Money",
-            minWithdraw: "Minimum Limit: ₹100",
-            profileTitle: "Profile & Settings",
-            saveSettings: "Save Settings",
-            logout: "Logout",
-            navHome: "Tasks",
-            navWallet: "Wallet",
-            navSettings: "Settings",
-            completed: "Completed",
-            doTask: "Start Task"
-        }
-    };
 
     window.onload = function() {
         const savedUser = localStorage.getItem('smartEarnUser');
@@ -417,39 +166,12 @@
         }
     };
 
-    function toggleLanguage() {
-        currentLang = currentLang === 'pa' ? 'en' : 'pa';
-        document.getElementById('langToggleBtn').innerText = currentLang === 'pa' ? 'English' : 'ਪੰਜਾਬੀ';
-        applyLanguageTexts();
-    }
-
-    function applyLanguageTexts() {
-        const t = translations[currentLang];
-        document.getElementById('lblWalletBal').innerText = t.walletBal;
-        document.getElementById('lblTotalEarn').innerText = t.totalEarn;
-        document.getElementById('lblTasksTitle').innerText = t.tasksTitle;
-        document.getElementById('lblWithdrawTitle').innerText = t.withdrawTitle;
-        document.getElementById('lblMinWithdraw').innerText = t.minWithdraw;
-        document.getElementById('lblProfileTitle').innerText = t.profileTitle;
-        document.getElementById('btnSaveProfile').innerText = t.saveSettings;
-        document.getElementById('btnLogout').innerText = t.logout;
-        document.getElementById('navHomeText').innerText = t.navHome;
-        document.getElementById('navWalletText').innerText = t.navWallet;
-        document.getElementById('navSettingsText').innerText = t.navSettings;
-
-        if(!currentUser) {
-            document.getElementById('authTitle').innerText = isLoginMode ? t.loginTitle : t.registerTitle;
-            document.getElementById('authBtn').innerText = isLoginMode ? t.loginBtn : t.registerBtn;
-            document.getElementById('toggleAuth').innerText = isLoginMode ? t.toggleToRegister : t.toggleToLogin;
-        } else {
-            updateUI();
-        }
-    }
-
     function toggleAuthMode() {
         isLoginMode = !isLoginMode;
+        document.getElementById('authTitle').innerText = isLoginMode ? "ਲੌਗਇਨ ਕਰੋ" : "ਅਕਾਊਂਟ ਬਣਾਓ";
         document.getElementById('nameGroup').style.display = isLoginMode ? "none" : "block";
-        applyLanguageTexts();
+        document.getElementById('authBtn').innerText = isLoginMode ? "ਲੌਗਇਨ" : "ਰਜਿਸਟਰ ਕਰੋ";
+        document.getElementById('toggleAuth').innerText = isLoginMode ? "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ" : "ਪਹਿਲਾਂ ਤੋਂ ਅਕਾਊਂਟ ਹੈ? ਲੌਗਇਨ ਕਰੋ";
     }
 
     function handleAuth(event) {
@@ -459,7 +181,7 @@
         const name = document.getElementById('userName').value.trim();
 
         if (!email || !password) {
-            alert(currentLang === 'pa' ? "ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਭਰੋ!" : "Enter Email and Password!");
+            alert("ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਭਰੋ!");
             return;
         }
 
@@ -471,27 +193,11 @@
                     currentUser = user;
                     localStorage.setItem('smartEarnUser', JSON.stringify(currentUser));
                     showMainApp();
-                } else {
-                    alert(currentLang === 'pa' ? "ਗਲਤ ਪਾਸਵਰਡ!" : "Wrong Password!");
-                }
-            } else {
-                alert(currentLang === 'pa' ? "ਅਕਾਊਂਟ ਨਹੀਂ ਮਿਲਿਆ!" : "Account not found!");
-            }
+                } else { alert("ਗਲਤ ਪਾਸਵਰਡ!"); }
+            } else { alert("ਅਕਾਊਂਟ ਨਹੀਂ ਮਿਲਿਆ!"); }
         } else {
-            if (!name) {
-                alert(currentLang === 'pa' ? "ਨਾਮ ਭਰੋ!" : "Enter your name!");
-                return;
-            }
-            currentUser = {
-                name: name,
-                email: email,
-                password: password,
-                phone: '',
-                upi: '',
-                balance: 0,
-                earnings: 0,
-                completedTasks: []
-            };
+            if (!name) { alert("ਨਾਮ ਭਰੋ!"); return; }
+            currentUser = { name: name, email: email, password: password, phone: '', upi: '', balance: 0, earnings: 0, completedTasks: [] };
             saveUserData();
             showMainApp();
         }
@@ -507,15 +213,11 @@
     function showMainApp() {
         document.getElementById('authBox').classList.add('hidden');
         document.getElementById('bottomNav').classList.remove('hidden');
-        
-        // Fill Profile Form
         document.getElementById('editName').value = currentUser.name || '';
         document.getElementById('editEmail').value = currentUser.email || '';
         document.getElementById('editPhone').value = currentUser.phone || '';
-        document.getElementById('editPassword').value = currentUser.password || '';
         document.getElementById('editUPI').value = currentUser.upi || '';
         document.getElementById('withdrawDetailInput').value = currentUser.upi || '';
-
         switchTab('home');
         updateUI();
     }
@@ -524,7 +226,6 @@
         document.getElementById('tabHome').classList.add('hidden');
         document.getElementById('tabWallet').classList.add('hidden');
         document.getElementById('tabSettings').classList.add('hidden');
-
         document.getElementById('navHome').classList.remove('active');
         document.getElementById('navWallet').classList.remove('active');
         document.getElementById('navSettings').classList.remove('active');
@@ -542,20 +243,14 @@
     }
 
     function updateUI() {
-        const t = translations[currentLang];
         document.getElementById('walletBalance').innerText = '₹' + currentUser.balance.toFixed(2);
         document.getElementById('totalEarnings').innerText = '₹' + currentUser.earnings.toFixed(2);
-
         [1, 2, 3].forEach(taskId => {
             const btn = document.getElementById('task' + taskId + 'Btn');
             if (currentUser.completedTasks && currentUser.completedTasks.includes(taskId)) {
-                btn.innerText = t.completed;
+                btn.innerText = "ਪੂਰਾ ਹੋ ਗਿਆ";
                 btn.classList.add('btn-disabled');
                 btn.disabled = true;
-            } else {
-                btn.innerText = t.doTask;
-                btn.classList.remove('btn-disabled');
-                btn.disabled = false;
             }
         });
     }
@@ -564,11 +259,9 @@
         const btn = document.getElementById('task' + taskId + 'Btn');
         btn.disabled = true;
         let timeLeft = seconds;
-
         const timer = setInterval(() => {
             btn.innerText = `Wait (${timeLeft}s)`;
             timeLeft--;
-
             if (timeLeft < 0) {
                 clearInterval(timer);
                 currentUser.balance += reward;
@@ -577,32 +270,16 @@
                 currentUser.completedTasks.push(taskId);
                 saveUserData();
                 updateUI();
-                alert(currentLang === 'pa' ? `ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।` : `Congratulations! You earned ₹${reward}`);
+                alert(`ਵਧਾਈਆਂ! ਤੁਹਾਨੂੰ ₹${reward} ਮਿਲ ਗਏ ਹਨ।`);
             }
         }, 1000);
     }
 
-    function updateWithdrawInput() {
-        const method = document.getElementById('withdrawMethodSelect').value;
-        const input = document.getElementById('withdrawDetailInput');
-        if (method === 'UPI') input.placeholder = "Enter UPI ID (e.g. name@upi)";
-        else if (method === 'Paytm') input.placeholder = "Enter Paytm Number";
-        else input.placeholder = "Enter Account No & IFSC Code";
-    }
-
     function withdrawMoney() {
         const details = document.getElementById('withdrawDetailInput').value.trim();
-        if (!details) {
-            alert(currentLang === 'pa' ? "ਕਿਰਪਾ ਕਰਕੇ ਪੇਮੈਂਟ ਡਿਟੇਲ ਭਰੋ!" : "Please enter payment details!");
-            return;
-        }
-
-        if (currentUser.balance < 100) {
-            alert(currentLang === 'pa' ? "ਘੱਟੋ-ਘੱਟ ₹100 ਹੋਣ 'ਤੇ ਹੀ Withdraw ਹੋ ਸਕਦਾ ਹੈ।" : "Minimum withdrawal limit is ₹100.");
-            return;
-        }
-
-        alert(currentLang === 'pa' ? `ਤੁਹਾਡੀ ₹${currentUser.balance} ਦੀ ਰਿਕਵੈਸਟ ਦਰਜ ਹੋ ਗਈ ਹੈ!` : `Withdrawal request of ₹${currentUser.balance} submitted!`);
+        if (!details) { alert("ਪੇਮੈਂਟ ਡਿਟੇਲ ਭਰੋ!"); return; }
+        if (currentUser.balance < 100) { alert("ਘੱਟੋ-ਘੱਟ ₹100 ਹੋਣ 'ਤੇ ਹੀ Withdraw ਹੋਵੇਗਾ।"); return; }
+        alert(`ਤੁਹਾਡੀ ₹${currentUser.balance} ਦੀ ਰਿਕਵੈਸਟ ਦਰਜ ਹੋ ਗਈ ਹੈ!`);
         currentUser.balance = 0;
         saveUserData();
         updateUI();
@@ -612,10 +289,9 @@
         event.preventDefault();
         currentUser.name = document.getElementById('editName').value.trim();
         currentUser.phone = document.getElementById('editPhone').value.trim();
-        currentUser.password = document.getElementById('editPassword').value.trim();
         currentUser.upi = document.getElementById('editUPI').value.trim();
         saveUserData();
-        alert(currentLang === 'pa' ? "ਸੈਟਿੰਗਜ਼ ਸੇਵ ਹੋ ਗਈਆਂ ਹਨ!" : "Settings Saved Successfully!");
+        alert("ਸੈਟਿੰਗਜ਼ ਸੇਵ ਹੋ ਗਈਆਂ ਹਨ!");
     }
 
     function logout() {
@@ -623,6 +299,5 @@
         location.reload();
     }
 </script>
-
 </body>
 </html>
